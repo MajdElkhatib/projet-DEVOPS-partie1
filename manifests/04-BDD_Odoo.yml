@@ -18,33 +18,33 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-         env: prod
-         app: odoo-pgsql
+        env: prod
+        app: odoo-pgsql
     spec:
       containers:
-      - image: postgres:13
-        name: bdd-odoo
-        ports:
-        - containerPort: 5432
-        env:
-             - name: POSTGRES_DB
-               value: postgres
-             - name: POSTGRES_USER
-               value: odoo
-             - name: POSTGRES_PASSWORD
-               valueFrom:
-                  secretKeyRef:
-                     name: odoo-pgsql-password
-                     key: odoo
-        volumeMounts:
-              - name: pgsql-persistent-storage
-                mountPath: /var/lib/postgresql
-        resources: {}
-	readinessProbe:
-	   tcpSocket:
-	      port: 5432
+        - image: postgres:13
+          name: bdd-odoo
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: postgres
+            - name: POSTGRES_USER
+              value: odoo
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: odoo-pgsql-password
+                  key: odoo
+          volumeMounts:
+            - name: pgsql-persistent-storage
+              mountPath: /var/lib/postgresql
+          resources: {}
+          readinessProbe:
+            tcpSocket:
+              port: 5432
       volumes:
-         - name: pgsql-persistent-storage
-           persistentVolumeClaim:
-                 claimName: data-postgres-claim
+        - name: pgsql-persistent-storage
+          persistentVolumeClaim:
+            claimName: data-postgres-claim
 status: {}
