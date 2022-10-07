@@ -40,6 +40,9 @@ spec:
               - name: pgsql-persistent-storage
                 mountPath: /var/lib/postgresql
         resources: {}
+	readinessProbe:
+	   tcpSocket:
+	      port: 5432
       volumes:
          - name: pgsql-persistent-storage
            persistentVolumeClaim:

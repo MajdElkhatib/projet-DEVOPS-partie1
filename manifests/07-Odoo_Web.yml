@@ -47,6 +47,10 @@ spec:
               - name: odoo-persistent-storage
                 mountPath: /var/lib/odoo
         resources: {}
+	readinessProbe:
+	   httpGet:
+	      path: /
+	      port: 8069
       volumes:
          - name: odoo-persistent-storage
            persistentVolumeClaim:
