@@ -1,7 +1,7 @@
 # Liste des plugins de pre-commit
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.2.0
+    rev: v4.3.0
     hooks:
         - check-added-large-files # prevents giant files from being committed.
         - # check-ast # simply checks whether the files parse as valid python.
