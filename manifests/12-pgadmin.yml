@@ -15,12 +15,21 @@ spec:
        app: pgadmin
        env: prod
    spec:
-     terminationGracePeriodSeconds: 10
+     initContainers:
+     - name: volume-mount-hack
+       image: busybox
+       command: ["sh", "-c", "chown -R 5050:5050 /var/lib/pgadmin"]
+       volumeMounts:
+       - name: pgadmin-data
+         mountPath: /var/lib/pgadmin
      containers:
        - name: pgadmin
-         image: dpage/pgadmin4:5.4
-         imagePullPolicy: Always
+         image: dpage/pgadmin4
          env:
+         - name: PGADMIN_LISTEN_ADDRESS
+           value: 0.0.0.0
+         - name: PGADMIN_PORT
+           value: "80"
          - name: PGADMIN_DEFAULT_EMAIL
            value: user@domain.com
          - name: PGADMIN_DEFAULT_PASSWORD
