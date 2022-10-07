@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+     env: prod
+     app: odoo-web
+  name: odoo-web
+  namespace: icgroup
+spec:
+  ports:
+  - port: 25000
+    protocol: TCP
+    targetPort: 8069
+    nodePort: 31000
+  selector:
+    env: prod
+    app: odoo-web
+  type: NodePort
+status:
+  loadBalancer: {}

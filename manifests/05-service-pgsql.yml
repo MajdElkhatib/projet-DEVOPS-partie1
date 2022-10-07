@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    env: prod
+  name: odoo-postgres
+  namespace: icgroup
+spec:
+  ports:
+  - port: 5432
+    protocol: TCP
+    targetPort: 5432
+  selector:
+    env: prod
+    app: odoo-pgsql
+  type: ClusterIP
+status:
+  loadBalancer: {}

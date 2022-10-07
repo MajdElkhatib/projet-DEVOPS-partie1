@@ -13,15 +13,15 @@ fi
 
 
 # Install longhorn with helm
-${HELM_PATH} repo add longhorn https://charts.longhorn.io
+su - vagrant  -c ${HELM_PATH} repo add longhorn https://charts.longhorn.io
 if [ $? -ne 0 ]; then
         echo "Impossible d'ajouter le repo à helm"
         exit 1
 fi
 
-${HELM_PATH} repo update
+su - vagrant  -c ${HELM_PATH} repo update
 
-${HELM_PATH} install longhorn longhorn/longhorn --namespace longhorn-system --create-namespace
+su - vagrant  -c ${HELM_PATH} install longhorn longhorn/longhorn --namespace longhorn-system --create-namespace
 if [ $? -ne 0 ]; then
         echo "Impossible d'installer longhorn"
         exit 1

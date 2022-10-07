@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    env: prod
+    app: odoo-pgsql
+  name: bdd-odoo
+  namespace: icgroup
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      env: prod
+      app: odoo-pgsql
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+         env: prod
+         app: odoo-pgsql
+    spec:
+      containers:
+      - image: postgres:13
+        name: bdd-odoo
+        ports:
+        - containerPort: 5432
+        env:
+             - name: POSTGRES_DB
+               value: postgres
+             - name: POSTGRES_USER
+               value: odoo
+             - name: POSTGRES_PASSWORD
+               valueFrom:
+                  secretKeyRef:
+                     name: odoo-pgsql-password
+                     key: odoo
+        volumeMounts:
+              - name: pgsql-persistent-storage
+                mountPath: /var/lib/postgresql
+        resources: {}
+      volumes:
+         - name: pgsql-persistent-storage
+           persistentVolumeClaim:
+                 claimName: data-postgres-claim
+status: {}
