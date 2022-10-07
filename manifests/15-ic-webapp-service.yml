@@ -15,7 +15,7 @@ spec:
     nodePort: 31500
   selector:
     env: prod
-    app: icgroup
+    app: ic-webapp
   type: NodePort
 status:
   loadBalancer: {}
