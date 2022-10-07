@@ -21,3 +21,4 @@ repos:
         args: ['--fix=lf']
     -   id: check-case-conflict
     -   id: check-merge-conflict
+    -   id: check-vcs-permalinks
