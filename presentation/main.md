@@ -4,7 +4,7 @@ Ce support est rédigé au format markdown afin de pouvoir être versionné faci
 
 Référentiels de la syntaxe markdown:
 
-- <https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax4>
+- <https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax>
 - <https://www.markdownguide.org/basic-syntax/>
 - <https://www.markdownguide.org/extended-syntax/>
 
@@ -13,7 +13,8 @@ Référentiels de la syntaxe markdown:
 Le projet final sera versionné dans un repository **git** dont le dépôt principal sera hébergé ici:
 <https://github.com/Romain-Revel/ajc-projet-final/>
 
-L'infrastructure sera implémentée avec **vagrant** et avec le provider **Virtualbox**. Le dossier infrastructure contiendra les fichiers et sous-dossiers nécessaires à l'installation de celle-ci.
+L'infrastructure sera implémentée avec **vagrant** et avec le provider **Virtualbox**.
+Le dossier infrastructure contiendra les fichiers et sous-dossiers nécessaires.
 
 ### Infrastructure
 
