@@ -17,3 +17,5 @@ repos:
     -   id: forbid-new-submodules
     -   id: check-json
     -   id: check-xml
+    -   id: mixed-line-ending
+        args: ['--fix=lf']
