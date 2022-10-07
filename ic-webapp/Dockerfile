@@ -15,6 +15,4 @@ WORKDIR /opt/ic-webapp
 
 EXPOSE 8080		
 
-ENTRYPOINT [ "python3" ]
-
-CMD [ "app.py" ]
+CMD [ "python3", "app.py" ]
