@@ -15,8 +15,4 @@ WORKDIR /opt/ic-webapp
 
 EXPOSE 8080		
 
-# Run the image as a non-root user
-RUN adduser -D docker-user
-USER docker-user
-
 CMD [ "python3", "app.py"]
