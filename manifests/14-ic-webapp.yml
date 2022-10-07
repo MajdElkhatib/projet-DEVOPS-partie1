@@ -20,24 +20,10 @@ spec:
          image: sh0t1m3/ic-webapp:1.0
          env:
          - name: ODOO_URL
-           value: odoo-web
+           value: http://192.168.99.10:31000
          - name: PGADMIN_URL
-           value: pgadmin
+           value: http://192.168.99.10:32000
          ports:
          - name: http
            containerPort: 8080
            protocol: TCP
-#         volumeMounts:
-#         - name: pgadmin-config
-#           mountPath: /pgadmin4/servers.json
-#           subPath: servers.json
-#           readOnly: true
-#         - name: pgadmin-data
-#           mountPath: /var/lib/pgadmin
-#     volumes:
-#     - name: pgadmin-config
-#       configMap:
-#         name: pgadmin-config
-#     - name: pgadmin-data
-#       persistentVolumeClaim:
-#         claimName: data-pgadmin-claim
