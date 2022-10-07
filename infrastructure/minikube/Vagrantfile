@@ -4,10 +4,33 @@
 #   + On windows => $env:ENABLE_ZSH="true"
 #   + On Linux  => export ENABLE_ZSH="true
 
+module OS
+	def OS.windows?
+		(/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
+        end
+
+        def OS.mac?
+		(/darwin/ =~ RUBY_PLATFORM) != nil
+	end
+	def OS.unix?
+		!OS.windows?
+	end
+	def OS.linux?
+		OS.unix? and not OS.mac?
+	end
+end
+
 Vagrant.configure("2") do |config|
   config.vm.define "minikube" do |minikube|
     minikube.vm.box = "geerlingguy/centos7"
-    minikube.vm.network "private_network",  type: "static", ip: "192.168.99.10", virtualbox__intnet: "08net"
+    if OS.linux?
+	minikube.vm.network "private_network",  type: "static", ip: "192.168.99.10", virtualbox__intnet: "08net"
+    elsif OS.windows?
+	minikube.vm.network "private_network",  type: "static", ip: "192.168.99.10"
+    else
+    	puts 'OS not managed'
+    end
+
     minikube.vm.hostname = "minikube"
     minikube.vm.provider "virtualbox" do |v|
       v.name = "minikube"
