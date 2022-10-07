@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+     env: prod
+     app: pgadmin
+  name: pgadmin
+  namespace: icgroup
+spec:
+  ports:
+  - port: 25000
+    protocol: TCP
+    targetPort: 80
+    nodePort: 32000
+  selector:
+    env: prod
+    app: pgadmin
+  type: NodePort
+status:
+  loadBalancer: {}
