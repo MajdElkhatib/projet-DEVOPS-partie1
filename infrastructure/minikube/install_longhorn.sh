@@ -26,4 +26,3 @@ if [ $? -ne 0 ]; then
         echo "Impossible d'installer longhorn"
         exit 1
 fi
-
