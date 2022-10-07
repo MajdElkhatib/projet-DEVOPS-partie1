@@ -1,0 +1,2 @@
+# On ne versionne pas le contenu des dossiers .vagrant
+.vagrant
