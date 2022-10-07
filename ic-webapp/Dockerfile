@@ -5,13 +5,13 @@ ENV PGADMIN_URL= ""
 
 # Install python and pip
 RUN apk add --no-cache --update python3 py3-pip bash
-ADD ic-webapp/requirements.txt /tmp/requirements.txt
+COPY ic-webapp/requirements.txt /tmp/requirements.txt
 
 # Install dependencies
 RUN pip3 install --no-cache-dir -q -r /tmp/requirements.txt
 
 # Add our code
-ADD ic-webapp /opt/ic-webapp/
+COPY ic-webapp /opt/ic-webapp/
 WORKDIR /opt/ic-webapp
 
 EXPOSE 8080		
