@@ -19,4 +19,4 @@ EXPOSE 8080
 RUN adduser -D docker-user
 USER docker-user
 
-CMD python app.py
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
