@@ -17,4 +17,4 @@ metadata:
 				storage: 2Gi
 EOF
 
-kubectl create deploy 
+kubectl create deploy

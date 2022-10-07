@@ -6,7 +6,7 @@ metadata:
 data:
  servers.json: |
     {
- 
+
         "Servers": {
                 "1": {
                 "Name": "Minimally Defined Server",
