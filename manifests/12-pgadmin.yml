@@ -48,10 +48,10 @@ spec:
               readOnly: true
             - name: pgadmin-data
               mountPath: /var/lib/pgadmin
-              readinessProbe:
-                httpGet:
-                  path: /
-                  port: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
       volumes:
         - name: pgadmin-config
           configMap:
