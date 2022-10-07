@@ -39,7 +39,7 @@ if __name__ == "__main__":
     else:
         print("No command line argument or environment variable. Picking a Random url =")
         ODOO_URL="https://www.youtube.com/"
-  
+
     if args.pgadmin_url:
         print("Pgadmin Url from command line argument =" + args.odoo_url)
         PGADMIN_URL = args.pgadmin_url

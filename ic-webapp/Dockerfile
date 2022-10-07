@@ -13,6 +13,6 @@ RUN pip3 install Flask
 COPY ic-webapp /opt/ic-webapp/
 WORKDIR /opt/ic-webapp
 
-EXPOSE 8080		
+EXPOSE 8080
 
 CMD [ "python3", "app.py" ]
