@@ -52,6 +52,10 @@ spec:
             httpGet:
               path: /
               port: 80
+<<<<<<< HEAD
+=======
+          resources: {}
+>>>>>>> dc8f86a122a0bed0cdbec234196e67bd9bf257b5
       volumes:
         - name: pgadmin-config
           configMap:
