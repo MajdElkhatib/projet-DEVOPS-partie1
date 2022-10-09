@@ -20,9 +20,9 @@ spec:
           image: sh0t1m3/ic-webapp:1.0
           env:
             - name: ODOO_URL
-              value: http://192.168.99.10:31000
+              value: http://192.168.99.9:31000
             - name: PGADMIN_URL
-              value: http://192.168.99.10:32000
+              value: http://192.168.99.9:32000
           ports:
             - name: http
               containerPort: 8080

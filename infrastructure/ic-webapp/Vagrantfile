@@ -21,30 +21,30 @@ module OS
 end
 
 Vagrant.configure("2") do |config|
-  config.vm.define "minikube" do |minikube|
-    minikube.vm.box = "geerlingguy/centos7"
+  config.vm.define "icwebapp" do |icwebapp|
+    icwebapp.vm.box = "geerlingguy/centos7"
     if OS.linux?
-	minikube.vm.network "private_network",  type: "static", ip: "192.168.99.10", virtualbox__intnet: "08net"
+	icwebapp.vm.network "private_network",  type: "static", ip: "192.168.99.9", virtualbox__intnet: "08net"
     elsif OS.windows?
-	minikube.vm.network "private_network",  type: "static", ip: "192.168.99.10"
+	icwebapp.vm.network "private_network",  type: "static", ip: "192.168.99.9"
     else
     	puts 'OS not managed'
     end
 
-    minikube.vm.hostname = "minikube"
-    minikube.vm.provider "virtualbox" do |v|
-      v.name = "minikube"
+    icwebapp.vm.hostname = "icwebapp"
+    icwebapp.vm.provider "virtualbox" do |v|
+      v.name = "icwebapp"
       v.memory = 4096
       v.cpus = 2
     end
-    minikube.vm.provision :shell do |shell|
+    icwebapp.vm.provision :shell do |shell|
       shell.path = "install_minikube.sh"
       shell.env = { 'ENABLE_ZSH' => ENV['ENABLE_ZSH'] }
     end
-    minikube.vm.provision :shell do |shell|
+    icwebapp.vm.provision :shell do |shell|
       shell.path = "install_longhorn.sh"
     end
-    minikube.vm.provision :shell do |shell|
+    icwebapp.vm.provision :shell do |shell|
       shell.path = "install_app.sh"
     end
   end
