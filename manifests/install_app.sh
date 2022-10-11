@@ -4,18 +4,19 @@ KUBECTL_PATH=$(which kubectl)
 
 if [ "${KUBECTL_PATH}" != "" ] ; then
 	if [ "$1" == "-q" ]; then
-		PGSQL_PASS="odoo"
-		PGADMIN_PASS="pgadmin"
-	else
-		if [ $# -eq 2 ]; then
+		if [ $# -eq 3 ]; then
 			PGSQL_PASS=$1
 			PGADMIN_PASS=$2
 		else
-			echo "$0 -q | PGSQL_PASSWORD PGADMIN_PASSWORD"
+			echo "$0 -q PGSQL_PASSWORD PGADMIN_PASSWORD"
 			exit 1
 		fi
+	else
+		echo "Enter the postgres password"
+		read PGSQL_PASS
+		echo "Enter the pgadmin password"
+		read PGADMIN_PASS
 	fi
-	
 	kubectl create secret generic  odoo-pgsql-password --from-literal=odoo="${PGSQL_PASS}" -n icgroup --dry-run=client -o yaml >03-secret_odoo-pgsql.yaml
 	kubectl create secret generic  pgadmin --from-literal=pgadmin-password="${PGADMIN_PASS}" -n icgroup --dry-run=client -o yaml >10-secret_pgadmin.yaml
 	kubectl apply -f .
