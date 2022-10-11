@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 sudo yum -y update
 sudo yum -y install epel-release
 sudo yum -y install git libvirt qemu-kvm virt-install virt-top libguestfs-tools bridge-utils
@@ -19,9 +19,11 @@ sudo bash -c "echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables"
 sudo systemctl enable docker.service
 su - vagrant -c "minikube start --driver=none --kubernetes-version v1.23.0"
 yum install bash-completion -y
-echo 'source <(kubectl completion bash)' >> ~vagrant/.bashrc
-echo 'alias k=kubectl' >> ~vagrant/.bashrc
-echo 'complete -F __start_kubectl k' >> ~vagrant/.bashrc
+{
+echo 'source <(kubectl completion bash)'
+echo 'alias k=kubectl'
+echo 'complete -F __start_kubectl k'
+} >> ~vagrant/.bashrc
 
 if [[ ! (-z "$ENABLE_ZSH")  &&  ($ENABLE_ZSH == "true") ]]
 then
