@@ -17,10 +17,12 @@ if [ "${KUBECTL_PATH}" != "" ] ; then
 		echo "Enter the pgadmin password"
 		read PGADMIN_PASS
 	fi
+	echo "Wait for the availability of all pods longhorn"
+	kubectl wait --for=condition=ready pods --all -n longhorn-system	
+	echo "Generate secrets strings"
 	kubectl create secret generic  odoo-pgsql-password --from-literal=odoo="${PGSQL_PASS}" -n icgroup --dry-run=client -o yaml >03-secret_odoo-pgsql.yaml
 	kubectl create secret generic  pgadmin --from-literal=pgadmin-password="${PGADMIN_PASS}" -n icgroup --dry-run=client -o yaml >10-secret_pgadmin.yaml
 	kubectl apply -f .
-	sleep 3
 	echo "Wait for the availability of all pods with the label env=prod"
 	kubectl wait --for=condition=ready pod -l env=prod -n icgroup --timeout=120s
 
