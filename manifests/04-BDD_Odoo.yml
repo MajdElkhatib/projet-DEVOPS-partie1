@@ -23,8 +23,6 @@ spec:
     spec:
       containers:
         - image: postgres:13
-          securityContext:
-            readOnlyRootFilesystem: true      
           name: bdd-odoo
           ports:
             - containerPort: 5432
