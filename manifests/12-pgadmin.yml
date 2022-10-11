@@ -52,13 +52,13 @@ spec:
             httpGet:
               path: /
               port: 80
-          resources:
-            requests:
-              memory: "300Mi"
-              cpu: "100m"
-            limits:
-              memory: "300Mi"
-              cpu: "200m"      
+          resources: {}
+#            requests:
+#              memory: "300Mi"
+#              cpu: "100m"
+#            limits:
+#              memory: "300Mi"
+#              cpu: "200m"      
       volumes:
         - name: pgadmin-config
           configMap:
