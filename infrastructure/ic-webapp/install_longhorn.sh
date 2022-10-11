@@ -27,4 +27,4 @@ if [ $? -ne 0 ]; then
         exit 1
 fi
 
-su vagrant -c "kubectl wait --for=condition=ready pod -l -n longhorn-system"
+su vagrant -c "kubectl wait --for=condition=ready pods --all -n longhorn-system"
