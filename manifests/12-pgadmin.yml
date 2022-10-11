@@ -24,7 +24,7 @@ spec:
               mountPath: /var/lib/pgadmin
       containers:
         - name: pgadmin
-          image: dpage/pgadmin4
+          image: dpage/pgadmin4:6.14
           env:
             - name: PGADMIN_LISTEN_ADDRESS
               value: 0.0.0.0
