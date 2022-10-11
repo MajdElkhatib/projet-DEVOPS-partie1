@@ -5,8 +5,8 @@ KUBECTL_PATH=$(which kubectl)
 if [ "${KUBECTL_PATH}" != "" ] ; then
 	if [ "$1" == "-q" ]; then
 		if [ $# -eq 3 ]; then
-			PGSQL_PASS=$1
-			PGADMIN_PASS=$2
+			PGSQL_PASS=$2
+			PGADMIN_PASS=$3
 		else
 			echo "$0 -q PGSQL_PASSWORD PGADMIN_PASSWORD"
 			exit 1

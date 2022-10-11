@@ -28,8 +28,8 @@ spec:
         fsGroupChangePolicy: "OnRootMismatch"        
       containers:
         - image: odoo:14
-          securityContext:
-            readOnlyRootFilesystem: true      
+#          securityContext:
+#            readOnlyRootFilesystem: true      
           name: odoo-web
           ports:
             - containerPort: 8069
@@ -46,13 +46,13 @@ spec:
           volumeMounts:
             - name: odoo-persistent-storage
               mountPath: /var/lib/odoo
-          resources:
-            requests:
-              memory: "250Mi"
-              cpu: "250m"
-            limits:
-              memory: "500Mi"
-              cpu: "500m"      
+          resources: {}
+#            requests:
+#              memory: "250Mi"
+#              cpu: "250m"
+#            limits:
+#              memory: "500Mi"
+#              cpu: "500m"      
           readinessProbe:
             httpGet:
               path: /

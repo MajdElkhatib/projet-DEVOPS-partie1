@@ -22,8 +22,8 @@ spec:
         fsGroupChangePolicy: "OnRootMismatch"  
       containers:
         - name: pgadmin
-          securityContext:
-            readOnlyRootFilesystem: true      
+#          securityContext:
+#            readOnlyRootFilesystem: true      
           image: dpage/pgadmin4:6.14
           env:
             - name: PGADMIN_LISTEN_ADDRESS
@@ -54,11 +54,11 @@ spec:
               port: 80
           resources:
             requests:
-              memory: "250Mi"
-              cpu: "250m"
+              memory: "100Mi"
+              cpu: "100m"
             limits:
-              memory: "500Mi"
-              cpu: "500m"      
+              memory: "100Mi"
+              cpu: "200m"      
       volumes:
         - name: pgadmin-config
           configMap:
