@@ -39,7 +39,13 @@ spec:
           volumeMounts:
             - name: pgsql-persistent-storage
               mountPath: /var/lib/postgresql
-          resources: {}
+          resources:
+            requests:
+              memory: "500Mi"
+              cpu: "250m"
+            limits:
+              memory: "1000Mi"
+              cpu: "500m"      
           readinessProbe:
             tcpSocket:
               port: 5432

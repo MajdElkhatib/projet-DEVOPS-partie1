@@ -44,7 +44,13 @@ spec:
           volumeMounts:
             - name: odoo-persistent-storage
               mountPath: /var/lib/odoo
-          resources: {}
+          resources:
+            requests:
+              memory: "250Mi"
+              cpu: "250m"
+            limits:
+              memory: "500Mi"
+              cpu: "500m"      
           readinessProbe:
             httpGet:
               path: /
