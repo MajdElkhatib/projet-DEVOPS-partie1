@@ -19,7 +19,8 @@ spec:
         runAsUser: 5050
         runAsGroup: 5050
         fsGroup: 5050
-        fsGroupChangePolicy: "OnRootMismatch"        
+        fsGroupChangePolicy: "OnRootMismatch"  
+        readOnlyRootFilesystem: true      
       containers:
         - name: pgadmin
           image: dpage/pgadmin4:6.14
