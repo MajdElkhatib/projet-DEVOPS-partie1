@@ -15,13 +15,11 @@ spec:
         app: pgadmin
         env: prod
     spec:
-      initContainers:
-        - name: volume-mount-hack
-          image: busybox:1.34.1
-          command: ["sh", "-c", "chown -R 5050:5050 /var/lib/pgadmin"]
-          volumeMounts:
-            - name: pgadmin-data
-              mountPath: /var/lib/pgadmin
+      securityContext:
+        runAsUser: 5050
+        runAsGroup: 5050
+        fsGroup: 5050
+        fsGroupChangePolicy: "OnRootMismatch"        
       containers:
         - name: pgadmin
           image: dpage/pgadmin4:6.14
