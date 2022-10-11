@@ -17,6 +17,8 @@ spec:
     spec:
       containers:
         - name: ic-webapp
+          securityContext:
+            readOnlyRootFilesystem: true      
           image: sh0t1m3/ic-webapp:1.0
           env:
             - name: ODOO_URL

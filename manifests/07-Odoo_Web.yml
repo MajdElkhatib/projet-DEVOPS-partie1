@@ -28,6 +28,8 @@ spec:
         fsGroupChangePolicy: "OnRootMismatch"        
       containers:
         - image: odoo:14
+          securityContext:
+            readOnlyRootFilesystem: true      
           name: odoo-web
           ports:
             - containerPort: 8069
