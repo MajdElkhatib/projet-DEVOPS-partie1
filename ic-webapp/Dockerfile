@@ -4,13 +4,17 @@ ENV ODOO_URL=""
 ENV PGADMIN_URL=""
 
 # Install python and pip
-RUN apk add --no-cache --update python3 py3-pip bash
-
-# Install dependencies
-RUN pip3 install Flask
+RUN apk add --no-cache --update python3 py3-pip bash && \
+        # Install dependencies
+        pip3 install Flask && \
+        # Add a Group and user icwebapp
+        addgroup -S icwebapp && \
+        adduser -S icwebapp -G icwebapp
 
 # Add our code
-COPY ic-webapp /opt/ic-webapp/
+COPY --chown=icwebapp:icwebapp ic-webapp /opt/ic-webapp/
+
+USER icwebapp
 WORKDIR /opt/ic-webapp
 
 EXPOSE 8080
