@@ -25,6 +25,7 @@ if [ "${KUBECTL_PATH}" != "" ] ; then
 	kubectl apply -f .
 	echo "Wait for the availability of all pods with the label env=prod"
 	kubectl wait --for=condition=ready pod -l env=prod -n icgroup --timeout=120s
+	rm -f 03-secret_odoo-pgsql.yaml 10-secret_pgadmin.yaml
 
 	echo "You can access http://$(ip -f inet addr show enp0s8 | sed -En -e 's/.*inet ([0-9.]+).*/\1/p'):31500 to use the ic-webapp"
 else 
